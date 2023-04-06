@@ -7,10 +7,10 @@ prices = [95800, 110500, 105100]
 
 print(merge_lists_to_dict(list_2=prices, list_1=cars))
 
-names = ['Тим', 'Егорчик', 'Ванечка']
-ages = [42, 9, 8]
+first_names = ['John', 'Paul', 'George', 'Ringo']
+last_names = ['Lennon', 'McCartney', 'Harrison', 'Starr']
 
-print(merge_lists_to_dict(names, list_2=ages))
+print(merge_lists_to_dict(first_names, list_2=last_names))
 
 # SyntaxError: positional argument follows keyword argument
-# print(merge_lists_to_dict(list1=names, ages))
+# print(merge_lists_to_dict(list1=first_names, last_names))

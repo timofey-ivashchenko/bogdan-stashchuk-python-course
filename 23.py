@@ -13,7 +13,7 @@ def create_new_post(post, created=get_today_string()):
     return new_post
 
 
-old_post = {'id': 100500, 'author': 'Tymofii Ivashchenko'}
+old_post = {'id': 100500, 'author': 'Guido van Rossum'}
 new_post = create_new_post(post=old_post)
 
 print('Old post:', old_post)
