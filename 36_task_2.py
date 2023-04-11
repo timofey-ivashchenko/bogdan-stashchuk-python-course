@@ -9,7 +9,7 @@ def filter_list_1(list_to_filter: list, value_type: type) -> list:
 
 
 def filter_list_2(list_to_filter: list, value_type: type) -> list:
-    return list(filter(lambda x: type(x) == value_type, list_to_filter))
+    return list(filter(lambda x: type(x) is value_type, list_to_filter))
 
 
 source = [
