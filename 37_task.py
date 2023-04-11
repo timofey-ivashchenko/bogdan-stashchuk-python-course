@@ -1,7 +1,24 @@
 while True:
 
-    a = float(input('a: '))
-    b = float(input('b: '))
+    try:
+
+        a = float(input('a: '))
+
+    except ValueError:
+
+        print('Недопустимый ввод.')
+
+        continue
+
+    try:
+
+        b = float(input('b: '))
+
+    except ValueError:
+
+        print('Недопустимый ввод.')
+
+        continue
 
     if b == 0:
 
