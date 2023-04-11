@@ -5,5 +5,9 @@
 		"Ринго",
 		"Старр"
 	],
-	"cSpell.language": "en,ru,uk"
+	"cSpell.language": "en,ru,uk",
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.autopep8"
+	},
+	"python.formatting.provider": "none"
 }
