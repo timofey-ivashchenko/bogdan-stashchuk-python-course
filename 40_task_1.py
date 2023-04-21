@@ -1,29 +1,25 @@
 class Comment:
 
     def __add__(self, other: "Comment") -> dict:
-
         return {
             'merged_text': f'{self.text} {other.text}',
             'total_votes': self.votes + other.votes
         }
 
     def __eq__(self, other: "Comment") -> bool:
-
         return (
             id(self) == id(other)) or (
-            self.text == other.text and self.votes == other.votes)
+            self.text == other.text and
+            self.votes == other.votes)
 
     def __init__(self, text: str, votes: int = 0):
-
         self.text = text
         self.votes = votes
 
     def __str__(self) -> str:
-
         return f'Comment object at {hex(id(self))} {self.__dict__}'
 
     def upvote(self, votes_to_add: int):
-
         self.votes += votes_to_add
 
 
@@ -67,9 +63,6 @@ comments = {
 }
 
 for k1, v1 in comments.items():
-
     print()
-
     for k2, v2 in comments.items():
-
         print(f'{k1} == {k2}:', v1 == v2)
