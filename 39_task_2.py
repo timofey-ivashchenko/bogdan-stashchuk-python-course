@@ -7,23 +7,19 @@ class Employee:
             first_name: str,
             last_name: str,
             job_title: str):
-
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
         self.job_title = job_title
 
     def __str__(self):
-
         return f'[{self.id}] {self.first_name} {self.last_name}, {self.job_title}'
 
     @staticmethod
     def add_employee(first_name: str, last_name: str, job_title: str):
-
         new_id = len(Employee.all_employees) + 1
         employee = Employee(new_id, first_name, last_name, job_title)
         Employee.all_employees.append(employee)
-
         return employee
 
 
