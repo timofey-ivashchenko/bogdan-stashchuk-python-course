@@ -1,14 +1,29 @@
-def factorial(n: int, r: int = 1) -> int:
-    return r if n == 1 else factorial(n - 1, r * n)
+def factorial(n: int) -> int:
+    """
+    Вычисляет факториал целого положительного числа.
+
+    Args:
+        n (int): Целое положительное число.
+
+    Raises:
+        TypeError: Если n не целое число.
+        ValueError: Если n меньше 1.
+
+    Returns:
+        int: Факториал целого положительного числа.
+    """
+
+    if type(n) is not int:
+
+        raise TypeError("Аргумент n должен быть целым числом.")
+
+    if n < 1:
+
+        raise ValueError("Число n должно быть больше 0.")
+
+    return n if n == 1 else n * factorial(n - 1)
 
 
-print(factorial(1))
-print(factorial(2))
-print(factorial(3))
-print(factorial(4))
-print(factorial(5))
-print(factorial(6))
-print(factorial(7))
-print(factorial(8))
-print(factorial(9))
-print(factorial(10))
+for n in range(1, 101):
+
+    print(f'{n}! = {factorial(n)}')
