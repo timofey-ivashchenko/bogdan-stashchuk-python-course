@@ -5,17 +5,14 @@ class Image:
             resolution: str,
             title: str,
             extension: str):
-
         self.resolution = resolution
         self.title = title
         self.extension = extension
 
     def __str__(self):
-
         return f'<Image object at {hex(id(self))} {self.__dict__}>'
 
     def resize(self, resolution: str):
-
         self.resolution = resolution
 
 
