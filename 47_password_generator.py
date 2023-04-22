@@ -7,6 +7,7 @@ all_chars = string.ascii_letters + string.digits + string.punctuation
 
 
 def generate_password(length: int, chars: str = None) -> str:
+
     return ''.join(secrets.choice(chars or all_chars) for _ in range(length))
 
 
