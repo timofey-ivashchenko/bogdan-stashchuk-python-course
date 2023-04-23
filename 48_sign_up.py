@@ -6,32 +6,35 @@ from pathlib import Path
 
 class CredentialValidator:
 
-    def __init__(self):
+    def __get_email_pattern():
 
         file = Path('regex_patterns/email.txt')
         pattern = file.read_text()
-        self.email_pattern = re.compile(pattern)
+        return re.compile(pattern)
+
+    def __get_password_pattern():
 
         file = Path('regex_patterns/password.txt')
         pattern = file.read_text()
-        self.password_pattern = re.compile(pattern)
+        return re.compile(pattern)
 
-    def validate_email(self, email: str) -> bool:
+    email_pattern = __get_email_pattern()
+    password_pattern = __get_password_pattern()
 
-        return not not self.email_pattern.fullmatch(email)
+    def validate_email(email: str) -> bool:
 
-    def validate_password(self, password: str) -> bool:
+        return not not CredentialValidator.email_pattern.fullmatch(email)
 
-        return not not self.password_pattern.fullmatch(password)
+    def validate_password(password: str) -> bool:
 
+        return not not CredentialValidator.password_pattern.fullmatch(password)
 
-validator = CredentialValidator()
 
 while True:
 
     email = input('Введите адрес электронной почты: ' + Fore.BLUE)
 
-    if validator.validate_email(email):
+    if CredentialValidator.validate_email(email):
 
         print(Fore.GREEN + 'Электронная почта OK.' + Fore.RESET)
         break
@@ -42,7 +45,7 @@ while True:
 
     password = input('Введите пароль: ' + Fore.BLUE)
 
-    if validator.validate_password(password):
+    if CredentialValidator.validate_password(password):
 
         print(Fore.GREEN + 'Пароль OK.' + Fore.RESET)
         break
