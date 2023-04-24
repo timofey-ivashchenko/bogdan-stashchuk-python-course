@@ -4,52 +4,67 @@ from colorama import Fore
 from pathlib import Path
 
 
-class CredentialValidator:
+def validate_email(email: str) -> None | str:
 
-    def __get_email_pattern():
+    file = Path('regex_patterns/email.txt')
+    pattern = re.compile(file.read_text())
 
-        file = Path('regex_patterns/email.txt')
-        pattern = file.read_text()
-        return re.compile(pattern)
+    if not pattern.fullmatch(email):
 
-    def __get_password_pattern():
+        return 'Ошибка в адресе электронной почты.'
 
-        file = Path('regex_patterns/password.txt')
-        pattern = file.read_text()
-        return re.compile(pattern)
 
-    email_pattern = __get_email_pattern()
-    password_pattern = __get_password_pattern()
+def validate_password(password: str) -> None | str:
 
-    def validate_email(email: str) -> bool:
+    if re.compile('\s').search(password):
 
-        return not not CredentialValidator.email_pattern.fullmatch(email)
+        return 'Пароль не должен содержать пробелы.'
 
-    def validate_password(password: str) -> bool:
+    if len(password) < 8:
 
-        return not not CredentialValidator.password_pattern.fullmatch(password)
+        return 'Длина пароля должна быть не менее 8 символов.'
+
+    if not re.compile('[A-Z]').search(password):
+
+        return 'Пароль должен содержать латинскую букву в верхнем регистре.'
+
+    if not re.compile('[a-z]').search(password):
+
+        return 'Пароль должен содержать латинскую букву в нижнем регистре.'
+
+    if not re.compile('\d').search(password):
+
+        return 'Пароль должен содержать цифру.'
+
+    pattern = '[\[\](){}<>/\\|\.,:;?!`\'"\-=_~@#$%^&*+]'
+
+    if not re.compile(pattern).search(password):
+
+        return 'Пароль должен содержать специальный символ.'
 
 
 while True:
 
-    email = input('Введите адрес электронной почты: ' + Fore.BLUE)
+    email = input(Fore.RESET + 'Введите адрес электронной почты: ' + Fore.BLUE)
+    error = validate_email(email)
 
-    if CredentialValidator.validate_email(email):
+    if not error:
 
         print(Fore.GREEN + 'Электронная почта OK.' + Fore.RESET)
         break
 
-    print(Fore.RED + 'Ошибка в электронной почте.' + Fore.RESET)
+    print(Fore.RED + error + Fore.RESET)
 
 while True:
 
-    password = input('Введите пароль: ' + Fore.BLUE)
+    password = input(Fore.RESET + 'Введите пароль: ' + Fore.BLUE)
+    error = validate_password(password)
 
-    if CredentialValidator.validate_password(password):
+    if not error:
 
         print(Fore.GREEN + 'Пароль OK.' + Fore.RESET)
         break
 
-    print(Fore.RED + 'Пароль не соответствует требованиям.' + Fore.RESET)
+    print(Fore.RED + error + Fore.RESET)
 
 print(Fore.GREEN + 'Регистрация завершена.' + Fore.RESET)
