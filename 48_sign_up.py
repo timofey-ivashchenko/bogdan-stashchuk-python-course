@@ -16,31 +16,39 @@ def validate_email(email: str) -> None | str:
 
 def validate_password(password: str) -> None | str:
 
+    errors = []
+
     if re.compile('\s').search(password):
 
-        return 'Пароль не должен содержать пробелы.'
+        errors.append('Пароль не должен содержать пробелы.')
 
     if len(password) < 8:
 
-        return 'Длина пароля должна быть не менее 8 символов.'
+        errors.append('Длина пароля должна быть не менее 8 символов.')
 
     if not re.compile('[A-Z]').search(password):
 
-        return 'Пароль должен содержать латинскую букву в верхнем регистре.'
+        errors.append(
+            'Пароль должен содержать латинскую букву в верхнем регистре.')
 
     if not re.compile('[a-z]').search(password):
 
-        return 'Пароль должен содержать латинскую букву в нижнем регистре.'
+        errors.append(
+            'Пароль должен содержать латинскую букву в нижнем регистре.')
 
     if not re.compile('\d').search(password):
 
-        return 'Пароль должен содержать цифру.'
+        errors.append('Пароль должен содержать цифру.')
 
     pattern = '[\[\](){}<>/\\|\.,:;?!`\'"\-=_~@#$%^&*+]'
 
     if not re.compile(pattern).search(password):
 
-        return 'Пароль должен содержать специальный символ.'
+        errors.append('Пароль должен содержать специальный символ.')
+
+    if errors:
+
+        return errors
 
 
 while True:
@@ -58,13 +66,15 @@ while True:
 while True:
 
     password = input(Fore.RESET + 'Введите пароль: ' + Fore.BLUE)
-    error = validate_password(password)
+    errors = validate_password(password)
 
-    if not error:
+    if not errors:
 
         print(Fore.GREEN + 'Пароль OK.' + Fore.RESET)
         break
 
-    print(Fore.RED + error + Fore.RESET)
+    for error in errors:
+
+        print(Fore.RED + error + Fore.RESET)
 
 print(Fore.GREEN + 'Регистрация завершена.' + Fore.RESET)
