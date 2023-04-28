@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<meta charset="utf-8">
+	<meta name="description" content="Welcome letter for new employee">
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<title>Welcome letter</title>
+
+	<style>
+
+		body {
+			font-family: 'Roboto Light';
+			padding: 1cm;
+		}
+
+		h1 {
+			margin-bottom: 2rem;
+			margin-top: 0;
+		}
+
+		p {
+			margin: 0.5rem 0;
+		}
+
+		th {
+			padding-left: 1rem;
+			text-align: left;
+		}
+
+		.signature {
+			margin-top: 2rem;
+			font-style: italic;
+		}
+
+	</style>
+
+	<main>
+
+		<h1>Welcome</h1>
+		<p>Hello $employee_name,</p>
+		<p>We are glad to see you in our ranks!</p>
+		<p>Here are the details of your job offer:</p>
+		<p>&nbsp;</p>
+
+		<table>
+			<tbody>
+				<tr>
+					<td>Position:</td>
+					<th>$position</th>
+				</tr>
+				<tr>
+					<td>Annual salary:</td>
+					<th>$annual_salary</th>
+				</tr>
+				<tr>
+					<td>Start date:</td>
+					<th>$start_date</th>
+				</tr>
+			</tbody>
+		</table>
+
+	</main>
+
+	<div class="signature">
+		Kind regards,<br>
+		HR Department
+	</div>
+
+</html>

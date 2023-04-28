@@ -1,0 +1,56 @@
+Beautiful is better than ugly.
+Красивое лучше уродливого.
+
+Explicit is better than implicit.
+Явное лучше неявного.
+
+Simple is better than complex.
+Простое лучше сложного.
+
+Complex is better than complicated.
+Сложное лучше запутанного.
+
+Flat is better than nested.
+Развёрнутое лучше вложенного.
+
+Sparse is better than dense.
+Разреженное лучше плотного.
+
+Readability counts.
+Читаемость имеет значение.
+
+Special cases aren't special enough to break the rules.
+Особые случаи не настолько особые, чтобы нарушать правила.
+
+Although practicality beats purity.
+При этом практичность важнее безупречности.
+
+Errors should never pass silently.
+Ошибки не должны замалчиваться.
+
+Unless explicitly silenced.
+Если не замалчиваются явно.
+
+In the face of ambiguity, refuse the temptation to guess.
+Встретив двусмысленность, отбрось искушение угадать.
+
+There should be one -- and preferably only one -- obvious way to do it.
+Должен существовать один -- и, желательно, только один -- очевидный способ сделать что-то.
+
+Although that way may not be obvious at first unless you're Dutch.
+Хотя этот способ поначалу может быть и не очевиден, если ты не Голландец.
+
+Now is better than never.
+Сейчас лучше, чем никогда.
+
+Although never is often better than *right* now.
+Хотя никогда часто лучше, чем *прямо* сейчас.
+
+If the implementation is hard to explain, it's a bad idea.
+Если реализацию сложно объяснить -- идея точно плоха.
+
+If the implementation is easy to explain, it may be a good idea.
+Если реализацию легко объяснить -- возможно, идея хороша.
+
+Namespaces are one honking great idea -- let's do more of those!
+Пространства имён -- отличная штука! Будем использовать их чаще!
