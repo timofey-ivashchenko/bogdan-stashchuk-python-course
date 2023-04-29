@@ -1,14 +1,13 @@
 from array import array
-from pathlib import Path
 
 # Создаём массив целых чисел a.
 
-numbers = (1904, 1930, 1957, 1958, 1980, 1986, 2013, 2015)
+numbers = (1904, 1930, 1957, 1958, 1980, 1986, 2011, 2013, 2015)
 a = array('i', numbers)
 
 # Сохраняем массив a в бинарном файле.
 
-filename = 'integers.bin'
+filename = 'data/years.bin'
 
 with open(filename, 'wb') as file:
     a.tofile(file)
@@ -25,7 +24,3 @@ with open(filename, 'rb') as file:
 print('a:', a)
 print('b:', b)
 print('a == b:', a == b)
-
-# Удаляем бинарный файл.
-
-Path(filename).unlink()
