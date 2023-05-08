@@ -11,7 +11,7 @@ class Category(models.Model):
 
 class Course(models.Model):
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=512)
 
     price = models.FloatField()
 
