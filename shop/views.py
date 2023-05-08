@@ -1,6 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
 
 
-def index(request):
+def index(_):
     return HttpResponse('Hello from the Shop app!')
