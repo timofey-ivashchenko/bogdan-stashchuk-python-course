@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Category(models.Model):
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=128)
 
     created_at = models.DateTimeField(default=timezone.now)
 
@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class Course(models.Model):
 
-    title = models.CharField(max_length=512)
+    title = models.CharField(max_length=256)
 
     price = models.FloatField()
 
