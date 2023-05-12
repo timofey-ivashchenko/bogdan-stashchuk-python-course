@@ -1,6 +1,5 @@
-from .models import Course
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
-def index(_):
-    return HttpResponse(''.join(f'{x}<br>' for x in Course.objects.all()))
+def index(request):
+    return render(request=request, template_name='courses.html')
