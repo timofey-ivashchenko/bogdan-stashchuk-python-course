@@ -3,7 +3,7 @@ from .models import Course
 from django.shortcuts import get_object_or_404, render
 
 
-def index(request):
+def courses(request):
     courses = Course.objects.all()
     return render(
         request=request,
