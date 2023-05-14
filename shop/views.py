@@ -7,7 +7,7 @@ def courses(request):
     courses = Course.objects.all()
     return render(
         request=request,
-        template_name='courses.html',
+        template_name='shop/courses.html',
         context={'courses': courses}
     )
 
@@ -19,7 +19,7 @@ def single_course(request, course_id):
     #     course = Course.objects.get(pk=course_id)
     #     return render(
     #         request=request,
-    #         template_name='single_course.html',
+    #         template_name='shop/single_course.html',
     #         context={'course': course}
     #     )
     # except Course.DoesNotExist:
@@ -30,6 +30,6 @@ def single_course(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     return render(
         request=request,
-        template_name='single_course.html',
+        template_name='shop/single_course.html',
         context={'course': course}
     )
