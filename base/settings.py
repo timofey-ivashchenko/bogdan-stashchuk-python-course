@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
+    'tastypie',
 ]
 
 MIDDLEWARE = [
