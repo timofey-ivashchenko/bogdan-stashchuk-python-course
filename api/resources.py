@@ -28,3 +28,12 @@ class CourseResource(ModelResource):
         queryset = Course.objects.all()
 
         resource_name = 'courses'
+
+    def dehydrate(self, bundle):
+        bundle.data['category_id'] = bundle.obj.category_id
+        bundle.data['category_title'] = bundle.obj.category.title
+        return bundle
+
+    def hydrate(self, bundle):
+        bundle.obj.category_id = bundle.data['category_id']
+        return bundle
