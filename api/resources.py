@@ -1,4 +1,6 @@
+from .authentication import CustomAuthentication
 from shop.models import Category, Course
+from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource
 
 
@@ -18,6 +20,10 @@ class CourseResource(ModelResource):
     class Meta:
 
         allowed_methods = ['delete', 'get', 'post']
+
+        authentication = CustomAuthentication()
+
+        authorization = Authorization()
 
         queryset = Course.objects.all()
 
