@@ -25,17 +25,11 @@ Including another URL configuration
     path('blog/', include('blog.urls'))
 """
 
-from api.resources import CategoryResource, CourseResource
 from django.contrib import admin
 from django.urls import include, path
-from tastypie.api import Api
-
-api = Api(api_name='v1')
-api.register(CategoryResource())
-api.register(CourseResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(api.urls)),
-    path('shop/', include('shop.urls')),
+    path('api/', include('api.urls')),
+    path('shop/', include('shop.urls'))
 ]

@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.courses, name='root'),
     path('courses', views.courses, name='courses'),
     # Страница отдельного курса.
-    path('course/<int:course_id>', views.single_course, name='single_course'),
+    path('course/<int:course_id>', views.single_course, name='single_course')
 ]
