@@ -5,8 +5,7 @@ app_name = 'shop'
 
 urlpatterns = [
     # Список всех курсов.
-    path('', views.courses, name='root'),
-    path('courses', views.courses, name='courses'),
+    path('', views.courses, name='index'),
     # Страница отдельного курса.
     path('course/<int:course_id>', views.single_course, name='single_course')
 ]

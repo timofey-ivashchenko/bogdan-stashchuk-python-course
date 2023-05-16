@@ -12,7 +12,11 @@
 
 <nav class="bg-dark navbar navbar-dark">
 	<div class="container">
-		<a href="{% url 'shop:courses' %}" class="navbar-brand">Магазин курсов</a>
+		<a href="{% url 'shop:index' %}" class="navbar-brand">Магазин курсов</a>
+		<span>
+			<a href="{% url 'admin:index' %}" class="navbar-brand">Панель администратора</a>
+			<a href="/api/v1/" class="navbar-brand">Сервис API</a>
+		</span>
 	</div>
 </nav>
 
