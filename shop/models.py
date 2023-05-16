@@ -4,9 +4,15 @@ from django.utils import timezone
 
 class Category(models.Model):
 
-    title = models.CharField(max_length=128)
+    class Meta:
+
+        verbose_name = 'category'
+
+        verbose_name_plural = 'categories'
 
     created_at = models.DateTimeField(default=timezone.now)
+
+    title = models.CharField(max_length=128)
 
     def __str__(self):
         return self.title
@@ -14,17 +20,23 @@ class Category(models.Model):
 
 class Course(models.Model):
 
-    title = models.CharField(max_length=256)
+    class Meta:
 
-    price = models.FloatField()
+        verbose_name = 'course'
 
-    student_quantity = models.IntegerField()
-
-    review_quantity = models.IntegerField()
+        verbose_name_plural = 'courses'
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(default=timezone.now)
+
+    price = models.FloatField()
+
+    review_quantity = models.IntegerField()
+
+    student_quantity = models.IntegerField()
+
+    title = models.CharField(max_length=256)
 
     def __str__(self):
         return self.title
