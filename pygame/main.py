@@ -9,25 +9,25 @@ pygame.init()
 pygame.display.set_caption('My PyGame')
 
 # Установка размера окна.
-screen_width = 800
-screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Определение размера прямоугольника.
-rect_width = 100
-rect_height = 200
+RECT_WIDTH = 100
+RECT_HEIGHT = 200
 
 # Вычисление начальных координат прямоугольника:
 # размещение по центру окна.
-rect_x = (screen_width - rect_width) / 2
-rect_y = (screen_height - rect_height) / 2
+rect_x = (SCREEN_WIDTH - RECT_WIDTH) / 2
+rect_y = (SCREEN_HEIGHT - RECT_HEIGHT) / 2
 
 # Цвета окна и прямоугольника.
-screen_color = (2, 84, 100)
-rect_color = (232, 170, 66)
+SCREEN_COLOR = (2, 84, 100)
+RECT_COLOR = (232, 170, 66)
 
 # Шаг смещения прямоугольника.
-step = 50
+STEP = 50
 
 # Обработка событий окна.
 while True:
@@ -41,20 +41,20 @@ while True:
         elif event.type == pygame.KEYDOWN:
             # Стрелка влево.
             if event.key == pygame.K_LEFT:
-                rect_x -= step
+                rect_x -= STEP
             # Стрелка вправо.
             elif event.key == pygame.K_RIGHT:
-                rect_x += step
+                rect_x += STEP
             # Стрелка вверх.
             elif event.key == pygame.K_UP:
-                rect_y -= step
+                rect_y -= STEP
             # Стрелка вниз.
             elif event.key == pygame.K_DOWN:
-                rect_y += step
+                rect_y += STEP
         # Заливка фона окна.
-        screen.fill(screen_color)
+        SCREEN.fill(SCREEN_COLOR)
         # Прорисовка прямоугольника.
-        rect = (rect_x, rect_y, rect_width, rect_height)
-        pygame.draw.rect(screen, rect_color, rect)
+        rect = (rect_x, rect_y, RECT_WIDTH, RECT_HEIGHT)
+        pygame.draw.rect(SCREEN, RECT_COLOR, rect)
         # Обновление экрана.
         pygame.display.update()
