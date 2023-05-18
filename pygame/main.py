@@ -41,16 +41,20 @@ while True:
         elif event.type == pygame.KEYDOWN:
             # Стрелка влево.
             if event.key == pygame.K_LEFT:
-                rect_x -= STEP
+                if rect_x - STEP >= 0:
+                    rect_x -= STEP
             # Стрелка вправо.
             elif event.key == pygame.K_RIGHT:
-                rect_x += STEP
+                if rect_x + RECT_WIDTH + STEP <= SCREEN_WIDTH:
+                    rect_x += STEP
             # Стрелка вверх.
             elif event.key == pygame.K_UP:
-                rect_y -= STEP
+                if rect_y - STEP >= 0:
+                    rect_y -= STEP
             # Стрелка вниз.
             elif event.key == pygame.K_DOWN:
-                rect_y += STEP
+                if rect_y + RECT_HEIGHT + STEP <= SCREEN_HEIGHT:
+                    rect_y += STEP
         # Заливка фона окна.
         SCREEN.fill(SCREEN_COLOR)
         # Прорисовка прямоугольника.
