@@ -6,7 +6,7 @@ import pygame
 pygame.init()
 
 # Установка заголовка окна.
-pygame.display.set_caption('My PyGame')
+pygame.display.set_caption('Перемещаем прямоугольник')
 
 # Установка размера окна.
 SCREEN_WIDTH = 800
