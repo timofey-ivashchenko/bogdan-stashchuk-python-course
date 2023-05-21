@@ -2,63 +2,63 @@ import sys
 
 import pygame
 
-# Инициализация игры.
+# Initialize the game.
 pygame.init()
 
-# Установка заголовка окна.
-pygame.display.set_caption('Перемещаем прямоугольник')
+# Set the window caption.
+pygame.display.set_caption('Move the Rectangle')
 
-# Установка размера окна.
+# Set the size of the window.
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-# Определение размера прямоугольника.
+# Set the size of the rectangle.
 RECT_WIDTH = 100
 RECT_HEIGHT = 200
 
-# Вычисление начальных координат прямоугольника:
-# размещение по центру окна.
+# Calculate the initial coordinates of the rectangle:
+# place in the center of the window.
 rect_x = (SCREEN_WIDTH - RECT_WIDTH) / 2
 rect_y = (SCREEN_HEIGHT - RECT_HEIGHT) / 2
 
-# Цвета окна и прямоугольника.
+# The colors of the window and rectangle.
 SCREEN_COLOR = (2, 84, 100)
 RECT_COLOR = (232, 170, 66)
 
-# Шаг смещения прямоугольника.
+# The rectangle offset step.
 STEP = 50
 
-# Обработка событий окна.
+# Process window events.
 while True:
     for event in pygame.event.get():
-        # Вывод в терминал информации о событии.
+        # Print the event information in the terminal.
         print(event)
-        # Завершение работы программы по событию QUIT.
+        # End the program on the QUIT event.
         if event.type == pygame.QUIT:
             sys.exit()
-        # Нажатие клавиши на клавиатуре.
+        # Pressing a key on the keyboard.
         elif event.type == pygame.KEYDOWN:
-            # Стрелка влево.
+            # Left arrow.
             if event.key == pygame.K_LEFT:
                 if rect_x - STEP >= 0:
                     rect_x -= STEP
-            # Стрелка вправо.
+            # Right arrow.
             elif event.key == pygame.K_RIGHT:
                 if rect_x + RECT_WIDTH + STEP <= SCREEN_WIDTH:
                     rect_x += STEP
-            # Стрелка вверх.
+            # Up arrow.
             elif event.key == pygame.K_UP:
                 if rect_y - STEP >= 0:
                     rect_y -= STEP
-            # Стрелка вниз.
+            # Down arrow.
             elif event.key == pygame.K_DOWN:
                 if rect_y + RECT_HEIGHT + STEP <= SCREEN_HEIGHT:
                     rect_y += STEP
-        # Заливка фона окна.
+        # Fill the window background.
         SCREEN.fill(SCREEN_COLOR)
-        # Прорисовка прямоугольника.
+        # Draw the rectangle.
         rect = (rect_x, rect_y, RECT_WIDTH, RECT_HEIGHT)
         pygame.draw.rect(SCREEN, RECT_COLOR, rect)
-        # Обновление экрана.
+        # Update the display.
         pygame.display.update()
