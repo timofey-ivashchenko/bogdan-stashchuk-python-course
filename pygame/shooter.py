@@ -98,3 +98,13 @@ while True:
     if alien_was_generated:
         SCREEN.blit(ALIEN_IMAGE, (alien_x, alien_y))
     pygame.display.update()
+
+# Display the Game Over text.
+FONT = pygame.font.Font(None, 30)
+GAME_OVER_TEXT = FONT.render('GAME OVER', True, 'white')
+GAME_OVER_RECT = GAME_OVER_TEXT.get_rect()
+GAME_OVER_RECT.center = (SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+SCREEN.blit(GAME_OVER_TEXT, GAME_OVER_RECT)
+pygame.display.update()
+pygame.time.wait(3000)
+pygame.quit()
