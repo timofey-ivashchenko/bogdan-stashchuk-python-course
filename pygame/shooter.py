@@ -29,6 +29,9 @@ alien_was_generated = False
 alien_step = 0.05
 ALIEN_STEP_INCREASE = 0.005
 
+score = 0
+SCORE_FONT = pygame.font.Font(None, 30)
+
 while True:
     for event in pygame.event.get():
         print(event)
@@ -90,24 +93,34 @@ while True:
             BALL_X <= alien_x + ALIEN_WIDTH:
         alien_was_generated = False
         ball_was_fired = False
+        # Update the score.
+        score += 1
         # Speed up the new alien.
         alien_step += ALIEN_STEP_INCREASE
 
-    # Render the elements.
     SCREEN.fill((32, 52, 71))
+
+    # Render the objects.
     SCREEN.blit(FIGHTER_IMAGE, (fighter_x, FIGHTER_Y))
     if ball_was_fired:
         SCREEN.blit(BALL_IMAGE, (BALL_X, ball_y))
     if alien_was_generated:
         SCREEN.blit(ALIEN_IMAGE, (alien_x, alien_y))
+
+    # Display the score.
+    SCORE_TEXT = SCORE_FONT.render(f'Score: {score}', True, 'green')
+    SCORE_RECT = SCORE_TEXT.get_rect()
+    SCORE_RECT.bottomleft = (20, SCREEN_HEIGHT - 20)
+    SCREEN.blit(SCORE_TEXT, SCORE_RECT)
+
     pygame.display.update()
 
 # Display the Game Over text.
-FONT = pygame.font.Font(None, 30)
-GAME_OVER_TEXT = FONT.render('GAME OVER', True, 'white')
+GAME_OVER_FONT = pygame.font.Font(None, 72)
+GAME_OVER_TEXT = GAME_OVER_FONT.render('GAME OVER', True, 'brown1')
 GAME_OVER_RECT = GAME_OVER_TEXT.get_rect()
 GAME_OVER_RECT.center = (SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 SCREEN.blit(GAME_OVER_TEXT, GAME_OVER_RECT)
 pygame.display.update()
-pygame.time.wait(3000)
+pygame.time.wait(5000)
 pygame.quit()
