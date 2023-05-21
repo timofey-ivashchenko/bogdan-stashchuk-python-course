@@ -27,7 +27,7 @@ ALIEN_WIDTH, ALIEN_HEIGHT = ALIEN_IMAGE.get_size()
 alien_x, alien_y = 0, 0
 alien_was_generated = False
 alien_step = 0.05
-ALIEN_STEP_INCREASE = 0.05
+ALIEN_STEP_INCREASE = 0.005
 
 while True:
     for event in pygame.event.get():
