@@ -1,4 +1,5 @@
 import sys
+from random import randint
 
 import pygame
 
@@ -13,13 +14,19 @@ FIGHTER_WIDTH, FIGHTER_HEIGHT = FIGHTER_IMAGE.get_size()
 fighter_x = (SCREEN_WIDTH - FIGHTER_WIDTH) / 2
 FIGHTER_Y = SCREEN_HEIGHT - FIGHTER_HEIGHT
 fighter_moving_left, fighter_moving_right = False, False
-FIGHTER_STEP = 1
+FIGHTER_STEP = 0.3
 
 BALL_IMAGE = pygame.image.load('images/ball.png')
 BALL_WIDTH, BALL_HEIGHT = BALL_IMAGE.get_size()
 BALL_X, ball_y = 0, 0
 ball_was_fired = False
 BALL_STEP = 1
+
+ALIEN_IMAGE = pygame.image.load('images/alien.png')
+ALIEN_WIDTH, ALIEN_HEIGHT = ALIEN_IMAGE.get_size()
+alien_x, alien_y = 0, 0
+alien_was_generated = False
+ALIEN_STEP = 0.05
 
 while True:
     for event in pygame.event.get():
@@ -62,9 +69,32 @@ while True:
         if ball_y + BALL_HEIGHT < 0:
             ball_was_fired = False
 
+    # Generate the alien.
+    if not alien_was_generated:
+        alien_x, alien_y = randint(0, SCREEN_WIDTH - ALIEN_WIDTH), 0
+        alien_was_generated = True
+
+    # Move the alien down.
+    if alien_was_generated:
+        alien_y += ALIEN_STEP
+        if alien_y + ALIEN_HEIGHT >= FIGHTER_Y:
+            print('Game over.')
+            break
+
+    # Shoot the alien.
+    if alien_was_generated and \
+            ball_was_fired and \
+            alien_y + ALIEN_HEIGHT >= ball_y and \
+            BALL_X + BALL_WIDTH >= alien_x and \
+            BALL_X <= alien_x + ALIEN_WIDTH:
+        alien_was_generated = False
+        ball_was_fired = False
+
     # Render the elements.
     SCREEN.fill((32, 52, 71))
     SCREEN.blit(FIGHTER_IMAGE, (fighter_x, FIGHTER_Y))
     if ball_was_fired:
         SCREEN.blit(BALL_IMAGE, (BALL_X, ball_y))
+    if alien_was_generated:
+        SCREEN.blit(ALIEN_IMAGE, (alien_x, alien_y))
     pygame.display.update()
