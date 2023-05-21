@@ -19,6 +19,7 @@ BALL_IMAGE = pygame.image.load('images/ball.png')
 BALL_WIDTH, BALL_HEIGHT = BALL_IMAGE.get_size()
 BALL_X, ball_y = 0, 0
 ball_was_fired = False
+BALL_STEP = 1
 
 while True:
     for event in pygame.event.get():
@@ -54,6 +55,12 @@ while True:
         fighter_x += STEP
         if fighter_x + FIGHTER_WIDTH > SCREEN_WIDTH:
             fighter_x = SCREEN_WIDTH - FIGHTER_WIDTH
+
+    # Move the ball up.
+    if ball_was_fired:
+        ball_y -= BALL_STEP
+        if ball_y + BALL_HEIGHT < 0:
+            ball_was_fired = False
 
     # Render the elements.
     SCREEN.fill((32, 52, 71))
