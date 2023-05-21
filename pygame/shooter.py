@@ -15,6 +15,11 @@ FIGHTER_Y = SCREEN_HEIGHT - FIGHTER_HEIGHT
 moving_left, moving_right = False, False
 STEP = 1
 
+BALL_IMAGE = pygame.image.load('images/ball.png')
+BALL_WIDTH, BALL_HEIGHT = BALL_IMAGE.get_size()
+BALL_X, ball_y = 0, 0
+ball_was_fired = False
+
 while True:
     for event in pygame.event.get():
         print(event)
@@ -28,6 +33,11 @@ while True:
             # Start moving the ship to the right by pressing down the right arrow key.
             elif event.key == pygame.K_RIGHT:
                 moving_right = True
+            # Place the ball directly in front of the ship in the center of the ship.
+            elif event.key == pygame.K_SPACE:
+                ball_was_fired = True
+                BALL_X = fighter_x + (FIGHTER_WIDTH - BALL_WIDTH) / 2
+                ball_y = FIGHTER_Y - BALL_HEIGHT
         # Stop moving the ship by pressing up the left or right arrow keys.
         elif event.type == pygame.KEYUP:
             moving_left = False
@@ -45,6 +55,9 @@ while True:
         if fighter_x + FIGHTER_WIDTH > SCREEN_WIDTH:
             fighter_x = SCREEN_WIDTH - FIGHTER_WIDTH
 
+    # Render the elements.
     SCREEN.fill((32, 52, 71))
     SCREEN.blit(FIGHTER_IMAGE, (fighter_x, FIGHTER_Y))
+    if ball_was_fired:
+        SCREEN.blit(BALL_IMAGE, (BALL_X, ball_y))
     pygame.display.update()
