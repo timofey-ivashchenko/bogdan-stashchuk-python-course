@@ -26,7 +26,8 @@ ALIEN_IMAGE = pygame.image.load('images/alien.png')
 ALIEN_WIDTH, ALIEN_HEIGHT = ALIEN_IMAGE.get_size()
 alien_x, alien_y = 0, 0
 alien_was_generated = False
-ALIEN_STEP = 0.05
+alien_step = 0.05
+ALIEN_STEP_INCREASE = 0.05
 
 while True:
     for event in pygame.event.get():
@@ -76,7 +77,7 @@ while True:
 
     # Move the alien down.
     if alien_was_generated:
-        alien_y += ALIEN_STEP
+        alien_y += alien_step
         if alien_y + ALIEN_HEIGHT >= FIGHTER_Y:
             print('Game over.')
             break
@@ -89,6 +90,8 @@ while True:
             BALL_X <= alien_x + ALIEN_WIDTH:
         alien_was_generated = False
         ball_was_fired = False
+        # Speed up the new alien.
+        alien_step += ALIEN_STEP_INCREASE
 
     # Render the elements.
     SCREEN.fill((32, 52, 71))
