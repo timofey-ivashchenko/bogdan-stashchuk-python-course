@@ -3,7 +3,7 @@ import sys
 import pygame
 
 pygame.init()
-pygame.display.set_caption('Pygame Shooter')
+pygame.display.set_caption('Awesome Alien Shooter')
 
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
